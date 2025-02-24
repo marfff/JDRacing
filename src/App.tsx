@@ -50,6 +50,7 @@ interface RaceSession {
 interface RaceDay {
   day: string;
   results: RaceSession[];
+  endPosition?: number;
 }
 
 interface RaceResult {
@@ -558,20 +559,20 @@ function App(): JSX.Element {
                     {Array.isArray(race.sessions[0]?.results) ? (
                       // Two-day format
                       <div className="space-y-4">
-                        {race.sessions.map((day, dayIndex) => (
-                          <div key={dayIndex} className="flex flex-col items-center">
-                            <span className="text-orange-500 font-bold mb-2">{day.day}</span>
+                        {race.sessions.map((session: RaceSession | RaceDay, sessionIndex) => (
+                          <div key={sessionIndex} className="flex flex-col items-center">
+                            <span className="text-orange-500 font-bold mb-2">{session.day}</span>
                             <div className="flex items-center justify-center gap-6 flex-wrap">
-                              {day.results.map((session, sessionIndex) => (
-                                <div key={sessionIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
-                                  <span className="text-orange-500 font-mono text-sm">{session.name}</span>
-                                  {session.position ? (
-                                    <span className="text-white text-sm">{session.position}</span>
+                              {session.results.map((sessionResult, sessionResultIndex) => (
+                                <div key={sessionResultIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
+                                  <span className="text-orange-500 font-mono text-sm">{sessionResult.name}</span>
+                                  {sessionResult.position ? (
+                                    <span className="text-white text-sm">{sessionResult.position}</span>
                                   ) : (
                                     <>
-                                      <span className="text-white text-sm">{session.startPosition}</span>
-                                      <ArrowRight className={`w-4 h-4 ${getChangeColor(session.startPosition, session.endPosition)}`} />
-                                      <span className="text-white text-sm">{session.endPosition}</span>
+                                      <span className="text-white text-sm">{sessionResult.startPosition}</span>
+                                      <ArrowRight className={`w-4 h-4 ${getChangeColor(sessionResult.startPosition, sessionResult.endPosition)}`} />
+                                      <span className="text-white text-sm">{sessionResult.endPosition}</span>
                                     </>
                                   )}
                                 </div>
@@ -583,7 +584,7 @@ function App(): JSX.Element {
                     ) : (
                       // Single-day format
                       <div className="flex items-center justify-center gap-6 flex-wrap">
-                        {race.sessions.map((session, sessionIndex) => (
+                        {race.sessions.map((session: RaceSession | RaceDay, sessionIndex) => (
                           <div key={sessionIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
                             <span className="text-orange-500 font-mono text-sm">{session.name}</span>
                             {session.position ? (
