@@ -1,7 +1,68 @@
 import React, { useEffect, useState } from 'react';
 import { Trophy, Medal, Clock, Youtube, Instagram, Facebook, Flag, Timer, Award, Users, Gauge, ChevronDown, MapPin, Cloud, Calendar, ArrowRight } from 'lucide-react';
 
-const races = [
+interface Race {
+  title: string;
+  date: string;
+  result: string;
+  videoId: string;
+  description: string;
+}
+
+interface Team {
+  name: string;
+  period: string;
+  logo?: string;
+  url: string;
+  description: string;
+}
+
+interface Training {
+  name: string;
+  url: string;
+  description: string;
+  coach: string;
+  achievements: string;
+  logo?: string;
+}
+
+interface Statistic {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+  description: string;
+}
+
+interface SocialLink {
+  platform: string;
+  url: string;
+  icon: React.ReactNode;
+  bgClass: string;
+}
+
+interface RaceSession {
+  name: string;
+  position?: number;
+  startPosition?: number;
+  endPosition?: number;
+}
+
+interface RaceDay {
+  day: string;
+  results: RaceSession[];
+}
+
+interface RaceResult {
+  track: string;
+  location: string;
+  trophy: string;
+  weather: string;
+  date: string;
+  gridSize: number;
+  sessions: RaceSession[] | RaceDay[];
+}
+
+const races: Race[] = [
   {
     title: "PFi Winter Warmer",
     date: "February 2024",
@@ -25,7 +86,7 @@ const races = [
   }
 ];
 
-const teams = [
+const teams: Team[] = [
   {
     name: "Coles Racing",
     period: "January 2025 - Present",
@@ -68,7 +129,7 @@ const teams = [
   }
 ];
 
-const training = {
+const training: Training = {
   name: "Team 17 / Ryley Price Driver Training",
   url: "https://www.facebook.com/people/Team-17-Coaching/61551012006781",
   description: "Professional driver training and development program",
@@ -77,7 +138,7 @@ const training = {
   logo: "https://i.postimg.cc/mD7JbrMV/temp-Imagewps-GZI.avif"
 };
 
-const statistics = [
+const statistics: Statistic[] = [
   {
     label: "Races",
     value: "50+",
@@ -104,7 +165,7 @@ const statistics = [
   }
 ];
 
-const socialLinks = [
+const socialLinks: SocialLink[] = [
   {
     platform: 'YouTube',
     url: 'https://www.youtube.com/@JamesDevereuxRacing',
@@ -125,7 +186,7 @@ const socialLinks = [
   }
 ];
 
-const raceResults = [
+const raceResults: RaceResult[] = [
   {
     track: "Warden Law",
     location: "Durham",
@@ -161,17 +222,17 @@ const raceResults = [
   }
 ];
 
-function App() {
-  const [currentRace, setCurrentRace] = useState(0);
+function App(): JSX.Element {
+  const [currentRace, setCurrentRace] = useState<number>(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentRace((prev) => (prev + 1) % races.length);
+      setCurrentRace((prev: number) => (prev + 1) % races.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
 
-  const getChangeColor = (start, end) => {
+  const getChangeColor = (start: number, end: number): string => {
     if (end < start) return 'text-green-500';
     if (end > start) return 'text-red-500';
     return 'text-gray-400';
@@ -290,9 +351,10 @@ function App() {
                   src={`https://img.youtube.com/vi/${races[currentRace].videoId}/maxresdefault.jpg`}
                   alt={races[currentRace].title}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    if (e.currentTarget.src.includes('maxresdefault')) {
-                      e.currentTarget.src = `https://img.youtube.com/vi/${races[currentRace].videoId}/hqdefault.jpg`;
+                  onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                    const target = e.currentTarget;
+                    if (target.src.includes('maxresdefault')) {
+                      target.src = `https://img.youtube.com/vi/${races[currentRace].videoId}/hqdefault.jpg`;
                     }
                   }}
                 />
@@ -338,9 +400,10 @@ function App() {
                 src={`https://img.youtube.com/vi/otsT4XBe6tA/maxresdefault.jpg`}
                 alt="BIKC National Championships"
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  if (e.currentTarget.src.includes('maxresdefault')) {
-                    e.currentTarget.src = `https://img.youtube.com/vi/otsT4XBe6tA/hqdefault.jpg`;
+                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                  const target = e.currentTarget;
+                  if (target.src.includes('maxresdefault')) {
+                    target.src = `https://img.youtube.com/vi/otsT4XBe6tA/hqdefault.jpg`;
                   }
                 }}
               />
