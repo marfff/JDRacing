@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Trophy, Medal, Clock, Youtube, Instagram, Flag, Timer, Award, Users, Gauge, ChevronDown, MapPin, Cloud, Calendar, ArrowRight } from 'lucide-react';
+import { Trophy, Medal, Clock, Youtube, Instagram, Facebook, Flag, Timer, Award, Users, Gauge, ChevronDown, MapPin, Cloud, Calendar, ArrowRight } from 'lucide-react';
 
 const races = [
   {
@@ -106,14 +106,22 @@ const statistics = [
 
 const socialLinks = [
   {
-    platform: "YouTube",
-    url: "https://www.youtube.com/channel/UCoHihw1k1dSoFnQCC_Y8T1Q",
-    icon: <Youtube className="w-6 h-6" />
+    platform: 'YouTube',
+    url: 'https://www.youtube.com/@JamesDevereuxRacing',
+    icon: <Youtube className="w-6 h-6" />,
+    bgClass: 'bg-red-600 hover:bg-red-700'
   },
   {
-    platform: "Instagram",
-    url: "https://www.instagram.com/jamesdevereuxracing/",
-    icon: <Instagram className="w-6 h-6" />
+    platform: 'Instagram',
+    url: 'https://www.instagram.com/jamesdevereuxracing/',
+    icon: <Instagram className="w-6 h-6" />,
+    bgClass: 'bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600'
+  },
+  {
+    platform: 'Facebook',
+    url: 'https://facebook.com/jdracing.2025',
+    icon: <Facebook className="w-6 h-6" />,
+    bgClass: 'bg-blue-600 hover:bg-blue-700'
   }
 ];
 
@@ -381,7 +389,7 @@ function App() {
                     <h4 className="text-orange-500 font-semibold mb-2">Achievement Highlights</h4>
                     <ul className="text-gray-100 space-y-2">
                       <li>• Qualified for National Finals</li>
-                      <li>• Podium Farnborough, Reading and Cardiff TEAMSPORT Tracks</li>
+                      <li>• Podium Farnborough, Reading and Cardiff TeamSport</li>
                       <li>• Representing Local Region</li>
                     </ul>
                   </div>
@@ -450,84 +458,96 @@ function App() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 tracking-tighter text-center">
             RACE RESULTS
           </h2>
-          <div className="space-y-8">
-            {raceResults.map((race, index) => (
-              <div key={index} className="bg-black/30 rounded-2xl p-8 hover:bg-black/40 transition-all">
-                {/* Race Info Header */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
-                  <div className="flex items-center gap-2">
-                    <Flag className="w-5 h-5 text-orange-500" />
-                    <span className="text-white">{race.track}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-orange-500" />
-                    <span className="text-white">{race.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-orange-500" />
-                    <span className="text-white">{race.trophy}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Cloud className="w-5 h-5 text-orange-500" />
-                    <span className="text-white">{race.weather}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-orange-500" />
-                    <span className="text-white">{race.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-orange-500" />
-                    <span className="text-white">{race.gridSize}</span>
-                  </div>
-                </div>
+          <div className="bg-black/90 text-white py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="space-y-8">
+                {raceResults.map((race, index) => (
+                  <div key={index} className="bg-black/30 rounded-2xl p-8 hover:bg-black/40 transition-all">
+                    {/* Race Info Header */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                      <div className="flex items-center gap-2">
+                        <Flag className="w-5 h-5 text-orange-500" />
+                        <span className="text-white">{race.track}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-5 h-5 text-orange-500" />
+                        <span className="text-white">{race.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Trophy className="w-5 h-5 text-orange-500" />
+                        <span className="text-white">{race.trophy}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Cloud className="w-5 h-5 text-orange-500" />
+                        <span className="text-white">{race.weather}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-5 h-5 text-orange-500" />
+                        <span className="text-white">{race.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="w-5 h-5 text-orange-500" />
+                        <span className="text-white">{race.gridSize}</span>
+                      </div>
+                    </div>
 
-                {/* Results Timeline */}
-                {Array.isArray(race.sessions[0]?.results) ? (
-                  // Two-day format
-                  <div className="space-y-4">
-                    {race.sessions.map((day, dayIndex) => (
-                      <div key={dayIndex} className="flex flex-col items-center">
-                        <span className="text-orange-500 font-bold mb-2">{day.day}</span>
-                        <div className="flex items-center justify-center gap-6 flex-wrap">
-                          {day.results.map((session, sessionIndex) => (
-                            <div key={sessionIndex} className="flex items-center gap-2">
-                              <span className="text-white font-bold">{session.name}</span>
-                              {session.position ? (
-                                <span className="text-white">{session.position}</span>
-                              ) : (
-                                <>
-                                  <span className="text-white">{session.startPosition}</span>
-                                  <ArrowRight className={`w-5 h-5 ${getChangeColor(session.startPosition, session.endPosition)}`} />
-                                  <span className="text-white">{session.endPosition}</span>
-                                </>
-                              )}
+                    {/* Results Timeline */}
+                    {Array.isArray(race.sessions[0]?.results) ? (
+                      // Two-day format
+                      <div className="space-y-4">
+                        {race.sessions.map((day, dayIndex) => (
+                          <div key={dayIndex} className="flex flex-col items-center">
+                            <span className="text-orange-500 font-bold mb-2">{day.day}</span>
+                            <div className="flex items-center justify-center gap-6 flex-wrap">
+                              {day.results.map((session, sessionIndex) => (
+                                <div key={sessionIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
+                                  <span className="text-orange-500 font-mono text-sm">{session.name}</span>
+                                  {session.position ? (
+                                    <span className="text-white text-sm">{session.position}</span>
+                                  ) : (
+                                    <>
+                                      <span className="text-white text-sm">{session.startPosition}</span>
+                                      <ArrowRight className={`w-4 h-4 ${getChangeColor(session.startPosition, session.endPosition)}`} />
+                                      <span className="text-white text-sm">{session.endPosition}</span>
+                                    </>
+                                  )}
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  // Single-day format
-                  <div className="flex items-center justify-center gap-6 flex-wrap">
-                    {race.sessions.map((session, sessionIndex) => (
-                      <div key={sessionIndex} className="flex items-center gap-2">
-                        <span className="text-white font-bold">{session.name}</span>
-                        {session.position ? (
-                          <span className="text-white">{session.position}</span>
-                        ) : (
-                          <>
-                            <span className="text-white">{session.startPosition}</span>
-                            <ArrowRight className={`w-5 h-5 ${getChangeColor(session.startPosition, session.endPosition)}`} />
-                            <span className="text-white">{session.endPosition}</span>
-                          </>
-                        )}
+                    ) : (
+                      // Single-day format
+                      <div className="flex items-center justify-center gap-6 flex-wrap">
+                        {race.sessions.map((session, sessionIndex) => (
+                          <div key={sessionIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
+                            <span className="text-orange-500 font-mono text-sm">{session.name}</span>
+                            {session.position ? (
+                              <span className="text-white text-sm">{session.position}</span>
+                            ) : (
+                              <>
+                                <span className="text-white text-sm">{session.startPosition}</span>
+                                <ArrowRight className={`w-4 h-4 ${getChangeColor(session.startPosition, session.endPosition)}`} />
+                                <span className="text-white text-sm">{session.endPosition}</span>
+                              </>
+                            )}
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </div>
-                )}
+                ))}
               </div>
-            ))}
+              
+              {/* Race Terminology Legend */}
+              <div className="mt-12 text-xs text-orange-500 flex items-center justify-center space-x-6 font-mono border-t border-gray-800 pt-8">
+                <span className="px-3 py-1.5 bg-black/30 rounded-lg hover:bg-black/40 transition-all">TQ - Timed Qualifying</span>
+                <span className="px-3 py-1.5 bg-black/30 rounded-lg hover:bg-black/40 transition-all">PF - Pre-Final</span>
+                <span className="px-3 py-1.5 bg-black/30 rounded-lg hover:bg-black/40 transition-all">FN - Final</span>
+                <span className="px-3 py-1.5 bg-black/30 rounded-lg hover:bg-black/40 transition-all">H - Heat</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -601,15 +621,12 @@ function App() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-6 rounded-2xl transition-all border-2 border-white ${
-                    link.platform === 'YouTube' 
-                      ? 'bg-red-600 hover:bg-red-700' 
-                      : 'bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600'
-                  }`}
+                  className={`p-6 rounded-2xl transition-all border-2 border-white flex items-center gap-3 ${link.bgClass}`}
                 >
                   <div className="text-white">
                     {link.icon}
                   </div>
+                  <span className="text-white font-semibold">{link.platform}</span>
                 </a>
               ))}
             </div>
