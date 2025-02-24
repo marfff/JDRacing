@@ -66,7 +66,7 @@ interface RaceResult {
 const races: Race[] = [
   {
     title: "PFi Winter Warmer",
-    date: "February 2024",
+    date: "February ",
     result: "19th out of 34 - First Time at PFi",
     videoId: "sCc7sVAUtyE",
     description: "Did well in some areas and practice will improve others"
@@ -193,7 +193,7 @@ const raceResults: RaceResult[] = [
     location: "Durham",
     trophy: "Spring Round 3 & 4",
     weather: "Raining / Damp / Dry",
-    date: "Feb 25",
+    date: "February ",
     gridSize: 23,
     sessions: [
       { day: "SAT", results: [
@@ -213,7 +213,7 @@ const raceResults: RaceResult[] = [
     location: "Grantham",
     trophy: "Winter Warmer",
     weather: "Dry",
-    date: "Feb 25",
+    date: "February ",
     gridSize: 33,
     sessions: [
       { name: "TQ", position: 21 },
@@ -431,7 +431,7 @@ function App(): JSX.Element {
               </a>
             </div>
 
-            <div className="p-8 pt-4">
+            <div className="p-8">
               <div className="flex items-center gap-3 mb-6">
                 <Award className="w-8 h-8 text-orange-500" />
                 <span className="text-white text-xl font-bold">National Championship Event</span>
@@ -556,48 +556,59 @@ function App(): JSX.Element {
                     </div>
 
                     {/* Results Timeline */}
-                    {Array.isArray(race.sessions[0]?.results) ? (
+                    {Array.isArray(race.sessions) && race.sessions.length > 0 && 'results' in race.sessions[0] ? (
                       // Two-day format
                       <div className="space-y-4">
-                        {race.sessions.map((session: RaceSession | RaceDay, sessionIndex) => (
-                          <div key={sessionIndex} className="flex flex-col items-center">
-                            <span className="text-orange-500 font-bold mb-2">{session.day}</span>
-                            <div className="flex items-center justify-center gap-6 flex-wrap">
-                              {session.results.map((sessionResult, sessionResultIndex) => (
-                                <div key={sessionResultIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
-                                  <span className="text-orange-500 font-mono text-sm">{sessionResult.name}</span>
-                                  {sessionResult.position ? (
-                                    <span className="text-white text-sm">{sessionResult.position}</span>
-                                  ) : (
-                                    <>
-                                      <span className="text-white text-sm">{sessionResult.startPosition}</span>
-                                      <ArrowRight className={`w-4 h-4 ${getChangeColor(sessionResult.startPosition, sessionResult.endPosition)}`} />
-                                      <span className="text-white text-sm">{sessionResult.endPosition}</span>
-                                    </>
-                                  )}
+                        {race.sessions.map((session: RaceSession | RaceDay, sessionIndex) => {
+                          const isRaceDay = (session: RaceSession | RaceDay): session is RaceDay => {
+                            return 'results' in session;
+                          };
+
+                          if (isRaceDay(session)) {
+                            return (
+                              <div key={sessionIndex} className="flex flex-col items-center">
+                                <span className="text-orange-500 font-bold mb-2">{session.day}</span>
+                                <div className="flex items-center justify-center gap-6 flex-wrap">
+                                  {session.results.map((sessionResult: RaceSession, sessionResultIndex) => (
+                                    <div key={sessionResultIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
+                                      <span className="text-orange-500 font-mono text-sm">{sessionResult.name}</span>
+                                      {sessionResult.position !== undefined ? (
+                                        <span className="text-white text-sm">{sessionResult.position}</span>
+                                      ) : (
+                                        <>
+                                          <span className="text-white text-sm">{sessionResult.startPosition}</span>
+                                          <ArrowRight className={`w-4 h-4 ${getChangeColor(sessionResult.startPosition!, sessionResult.endPosition!)}`} />
+                                          <span className="text-white text-sm">{sessionResult.endPosition}</span>
+                                        </>
+                                      )}
+                                    </div>
+                                  ))}
                                 </div>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
+                              </div>
+                            );
+                          }
+                        })}
                       </div>
                     ) : (
                       // Single-day format
                       <div className="flex items-center justify-center gap-6 flex-wrap">
-                        {race.sessions.map((session: RaceSession | RaceDay, sessionIndex) => (
-                          <div key={sessionIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
-                            <span className="text-orange-500 font-mono text-sm">{session.name}</span>
-                            {session.position ? (
-                              <span className="text-white text-sm">{session.position}</span>
-                            ) : (
-                              <>
-                                <span className="text-white text-sm">{session.startPosition}</span>
-                                <ArrowRight className={`w-4 h-4 ${getChangeColor(session.startPosition, session.endPosition)}`} />
-                                <span className="text-white text-sm">{session.endPosition}</span>
-                              </>
-                            )}
-                          </div>
-                        ))}
+                        {race.sessions.map((session: RaceSession | RaceDay, sessionIndex) => {
+                          if ('results' in session) return null; // Skip RaceDay objects in single-day format
+                          return (
+                            <div key={sessionIndex} className="flex items-center gap-3 bg-black/30 px-4 py-2 rounded-lg">
+                              <span className="text-orange-500 font-mono text-sm">{session.name}</span>
+                              {session.position !== undefined ? (
+                                <span className="text-white text-sm">{session.position}</span>
+                              ) : (
+                                <>
+                                  <span className="text-white text-sm">{session.startPosition}</span>
+                                  <ArrowRight className={`w-4 h-4 ${getChangeColor(session.startPosition!, session.endPosition!)}`} />
+                                  <span className="text-white text-sm">{session.endPosition}</span>
+                                </>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
