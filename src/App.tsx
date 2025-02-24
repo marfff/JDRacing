@@ -12,7 +12,7 @@ const races = [
   {
     title: "Kimbolton HKRC - Vice Champion - 2024",
     date: "January 2025",
-    result: "Micromax 2024 Series 🏆",
+    result: "Micromax 2024 Series ",
     videoId: "kFxI5SfrY8w",
     description: "Fastest and Superb Tactical Racing"
   },
@@ -29,28 +29,28 @@ const teams = [
   {
     name: "Coles Racing",
     period: "January 2025 - Present",
-    logo: "https://images.unsplash.com/photo-1669150740623-e56d9f31fb1c?q=80&w=150&auto=format&fit=crop",
+    logo: "https://i.postimg.cc/yNM24RJk/temp-Imageooj1-Zg.avif",
     url: "https://www.facebook.com/profile.php?id=100054381465870",
     description: "Current team in WERA British Karting Championship"
   },
   {
     name: "GWRacing",
     period: "February 2024 - December 2024",
-    logo: "https://images.unsplash.com/photo-1669150741551-13037f58ce4b?q=80&w=150&auto=format&fit=crop",
+    logo: "https://i.postimg.cc/DwYt6HnQ/temp-Imagek-UMUSr.avif",
     url: "https://www.facebook.com/profile.php?id=100088893572245",
     description: "Progression to the top tier"
   },
   {
     name: "Mason Perren Racing",
     period: "2024",
-    logo: "https://images.unsplash.com/photo-1669150741674-89021feb5e97?q=80&w=150&auto=format&fit=crop",
+    logo: "https://i.postimg.cc/zv5M31FN/temp-Imagee-TJo-Lq.avif",
     url: "https://www.facebook.com/profile.php?id=100056888694952",
     description: "Development and progression in karting"
   },
   {
     name: "Racing Perfection - BirelART",
     period: "2023",
-    logo: "https://images.unsplash.com/photo-1669150741818-2123a6f0f07c?q=80&w=150&auto=format&fit=crop",
+    logo: "https://i.postimg.cc/YSGTsRC5/temp-Imagenc-CVo-G.avif",
     url: "https://www.facebook.com/profile.php?id=100057775745044",
     description: "Early competitive racing experience"
   },
@@ -74,7 +74,7 @@ const training = {
   description: "Professional driver training and development program",
   coach: "Ryley Price",
   achievements: "Multiple championship-winning coach",
-  logo: "https://images.unsplash.com/photo-1669150741925-25ef4f382c25?q=80&w=150&auto=format&fit=crop"
+  logo: "https://i.postimg.cc/mD7JbrMV/temp-Imagewps-GZI.avif"
 };
 
 const statistics = [
@@ -638,6 +638,4 @@ function App() {
   );
 }
 
-
-
-export default App
+export default App;
