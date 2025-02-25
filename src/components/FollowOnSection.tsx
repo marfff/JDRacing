@@ -95,13 +95,15 @@ const FollowOnSection: React.FC<FollowOnSectionProps> = ({ socialLinks }) => {
             <a
               key={social.platform}
               href={social.url}
-              className={`w-14 h-14 flex items-center justify-center rounded-lg ${social.bgClass} transition-all duration-300 hover:scale-105`}
+              className={`group flex flex-col items-center gap-1 rounded-lg ${social.bgClass} transition-all duration-300 hover:scale-105 p-3`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Follow us on ${social.platform}`}
             >
-              {social.icon}
-              <span className="sr-only">{social.platform}</span>
+              <div className="w-8 h-8 flex items-center justify-center">
+                {social.icon}
+              </div>
+              <span className="text-xs font-medium text-white">{social.platform}</span>
             </a>
           ))}
         </div>

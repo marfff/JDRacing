@@ -83,14 +83,14 @@ function App(): JSX.Element {
       description: "Progression to the top tier"
     },
     {
-      name: "Mason Perren Racing",
+      name: "Ricky Flynn Motorsport",
       period: "2024",
       logo: "https://i.postimg.cc/zv5M31FN/temp-Imagee-TJo-Lq.avif",
       url: "https://www.facebook.com/profile.php?id=100056888694952",
       description: "Development and progression in karting"
     },
     {
-      name: "Racing Perfection - BirelART",
+      name: "Fusion Motorsport",
       period: "2023",
       logo: "https://i.postimg.cc/YSGTsRC5/temp-Imagenc-CVo-G.avif",
       url: "https://www.facebook.com/profile.php?id=100057775745044",
@@ -99,13 +99,15 @@ function App(): JSX.Element {
     {
       name: "Protrain",
       period: "2023",
-      url: "https://www.facebook.com/protrainracing",
+      url: "https://www.facebook.com/Protrainracing",
+      logo: "https://i.postimg.cc/Nj331J3P/temp-Image-Ug-Gerb.avif",
       description: "Foundation racing skills"
     },
     {
-      name: "Jeff Johnson Racing",
+      name: "Jeff Johnson / Prokart",
       period: "2022 - 2023",
-      url: "https://www.facebook.com/groups/246927632153448/user/100000447310293",
+      url: "https://www.facebook.com/ProkartEngineering",
+      logo: "https://i.postimg.cc/vB0hYDbw/temp-Imageb-Zh-Z0-O.avif",
       description: "Initial karting development"
     }
   ];
