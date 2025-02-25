@@ -86,19 +86,19 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ raceResults, getChangeC
                                     <span className="text-orange-500 font-mono text-sm">{result.name}</span>
                                     {result.position !== undefined ? (
                                       <span className="text-white text-sm">
-                                        Position: {result.position}
+                                        {result.position}
                                       </span>
                                     ) : result.startPosition !== undefined && result.endPosition !== undefined ? (
                                       <>
                                         <span className="text-white text-sm">
-                                          Start: {result.startPosition}
+                                          {result.startPosition}
                                         </span>
                                         <ArrowRight 
                                           className={`w-4 h-4 ${getChangeColor(result.startPosition, result.endPosition)}`}
                                           aria-hidden="true"
                                         />
                                         <span className="text-white text-sm">
-                                          End: {result.endPosition}
+                                          {result.endPosition}
                                         </span>
                                       </>
                                     ) : null}
