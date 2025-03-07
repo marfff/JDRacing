@@ -58,7 +58,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* News Ticker */}
-        <div className="fixed md:absolute bottom-0 left-0 right-0 overflow-hidden bg-orange-600/80 py-2 z-50">
+        <div className="fixed md:absolute bottom-[20vh] md:bottom-0 left-0 right-0 overflow-hidden bg-orange-600/80 py-2 z-50">
           <div className="animate-ticker whitespace-nowrap">
             <span className="inline-block px-4 font-bold text-sm md:text-base">NEW MARCH RACES & RESULTS COMING SOON</span>
             <span className="inline-block px-4 font-bold text-sm md:text-base">NEW MARCH RACES & RESULTS COMING SOON</span>
