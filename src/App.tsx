@@ -83,14 +83,14 @@ function App(): JSX.Element {
       description: "Progression to the top tier"
     },
     {
-      name: "Ricky Flynn Motorsport",
+      name: "Mason Perren Racing",
       period: "2024",
       logo: "https://i.postimg.cc/zv5M31FN/temp-Imagee-TJo-Lq.avif",
       url: "https://www.facebook.com/profile.php?id=100056888694952",
       description: "Development and progression in karting"
     },
     {
-      name: "Fusion Motorsport",
+      name: "Racing Perfection - BirelART",
       period: "2023",
       logo: "https://i.postimg.cc/YSGTsRC5/temp-Imagenc-CVo-G.avif",
       url: "https://www.facebook.com/profile.php?id=100057775745044",

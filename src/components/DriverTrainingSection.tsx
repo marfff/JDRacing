@@ -1,9 +1,9 @@
 import React from 'react';
-import { Training } from '../types';
+import { TrainingProgram } from '../types';
 import { useKeyboardNav, focusableSelector } from '../hooks/useKeyboardNav';
 
 interface DriverTrainingSectionProps {
-  training: Training;
+  training: TrainingProgram;
 }
 
 const DriverTrainingSection: React.FC<DriverTrainingSectionProps> = ({ training }) => {
