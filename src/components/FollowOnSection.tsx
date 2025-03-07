@@ -86,26 +86,40 @@ const FollowOnSection: React.FC<FollowOnSectionProps> = ({ socialLinks }) => {
         <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
           Have questions about races, registration, or anything else? Send us a message and we'll get back to you!
         </p>
-        <div
-          className="flex gap-4 justify-center max-w-2xl mx-auto"
-          role="list"
-          aria-label="Social media links"
-        >
-          {socialLinks.map((social) => (
-            <a
-              key={social.platform}
-              href={social.url}
-              className={`group flex flex-col items-center gap-1 rounded-lg ${social.bgClass} transition-all duration-300 hover:scale-105 p-3`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Follow us on ${social.platform}`}
-            >
-              <div className="w-8 h-8 flex items-center justify-center">
-                {social.icon}
-              </div>
-              <span className="text-xs font-medium text-white">{social.platform}</span>
-            </a>
-          ))}
+        <div className="flex flex-col items-center max-w-2xl mx-auto mb-16">
+          <div
+            className="flex gap-12 justify-center"
+            role="list"
+            aria-label="Social media links"
+          >
+            {socialLinks.map((social) => (
+              <a
+                key={social.platform}
+                href={social.url}
+                className={`group flex flex-col items-center justify-between w-48 h-48 rounded-2xl ${social.bgClass} transition-all duration-300 hover:scale-105 p-8 shadow-lg`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Follow us on ${social.platform}`}
+              >
+                <div className="w-16 h-16 flex items-center justify-center">
+                  {social.icon}
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  <span className="text-lg font-bold text-white">{social.platform}</span>
+                  <div className="flex flex-col items-center gap-2">
+                    <span className="text-sm font-medium text-gray-100 text-center">
+                      {social.handle}
+                    </span>
+                    {social.secondaryHandle && (
+                      <span className="text-sm font-medium text-gray-100 text-center">
+                        {social.secondaryHandle}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
         <div className="mt-16 p-8 bg-orange-950/30 backdrop-blur-sm rounded-2xl max-w-2xl mx-auto">
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-2">

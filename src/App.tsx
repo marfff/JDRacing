@@ -124,21 +124,25 @@ function App(): JSX.Element {
   const socialLinks: SocialLink[] = [
     {
       platform: 'YouTube',
-      url: 'https://www.youtube.com/@JamesDevereuxRacing',
-      icon: <Youtube className="w-6 h-6" />,
-      bgClass: 'bg-red-600 hover:bg-red-700'
+      url: 'https://www.youtube.com/@frizzler1',
+      icon: <Youtube className="w-8 h-8" />,
+      bgClass: 'bg-red-600 hover:bg-red-700',
+      handle: '@frizzler1'
     },
     {
       platform: 'Instagram',
       url: 'https://www.instagram.com/jamesdevereuxracing/',
-      icon: <Instagram className="w-6 h-6" />,
-      bgClass: 'bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600'
+      icon: <Instagram className="w-8 h-8" />,
+      bgClass: 'bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600',
+      handle: '@jamesdevereuxracing'
     },
     {
       platform: 'Facebook',
       url: 'https://facebook.com/jdracing.2025',
-      icon: <Facebook className="w-6 h-6" />,
-      bgClass: 'bg-blue-600 hover:bg-blue-700'
+      icon: <Facebook className="w-8 h-8" />,
+      bgClass: 'bg-blue-600 hover:bg-blue-700',
+      handle: 'jdracing.2025',
+      secondaryHandle: 'James Devereux Racing'
     }
   ];
 
