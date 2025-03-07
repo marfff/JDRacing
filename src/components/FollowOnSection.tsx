@@ -88,7 +88,7 @@ const FollowOnSection: React.FC<FollowOnSectionProps> = ({ socialLinks }) => {
         </p>
         <div className="flex flex-col items-center max-w-2xl mx-auto mb-16">
           <div
-            className="flex gap-12 justify-center"
+            className="flex flex-col md:flex-row gap-6 md:gap-12 justify-center"
             role="list"
             aria-label="Social media links"
           >
@@ -96,22 +96,22 @@ const FollowOnSection: React.FC<FollowOnSectionProps> = ({ socialLinks }) => {
               <a
                 key={social.platform}
                 href={social.url}
-                className={`group flex flex-col items-center justify-between w-48 h-48 rounded-2xl ${social.bgClass} transition-all duration-300 hover:scale-105 p-8 shadow-lg`}
+                className={`group flex flex-col items-center justify-between w-40 md:w-44 h-40 md:h-44 rounded-2xl ${social.bgClass} transition-all duration-300 hover:scale-105 p-6 md:p-8 shadow-lg`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Follow us on ${social.platform}`}
               >
-                <div className="w-16 h-16 flex items-center justify-center">
+                <div className="w-12 md:w-14 h-12 md:h-14 flex items-center justify-center">
                   {social.icon}
                 </div>
-                <div className="flex flex-col items-center gap-3">
-                  <span className="text-lg font-bold text-white">{social.platform}</span>
-                  <div className="flex flex-col items-center gap-2">
-                    <span className="text-sm font-medium text-gray-100 text-center">
+                <div className="flex flex-col items-center gap-2 md:gap-3">
+                  <span className="text-base md:text-lg font-bold text-white">{social.platform}</span>
+                  <div className="flex flex-col items-center gap-1 md:gap-2">
+                    <span className="text-xs md:text-sm font-medium text-gray-100 text-center">
                       {social.handle}
                     </span>
                     {social.secondaryHandle && (
-                      <span className="text-sm font-medium text-gray-100 text-center">
+                      <span className="text-xs md:text-sm font-medium text-gray-100 text-center">
                         {social.secondaryHandle}
                       </span>
                     )}

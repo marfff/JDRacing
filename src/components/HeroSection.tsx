@@ -57,8 +57,17 @@ const HeroSection: React.FC = () => {
           <ChevronDown className="w-6 h-6 text-orange-500" />
         </div>
 
+        {/* News Ticker */}
+        <div className="fixed md:absolute bottom-0 left-0 right-0 overflow-hidden bg-orange-600/80 py-2 z-50">
+          <div className="animate-ticker whitespace-nowrap">
+            <span className="inline-block px-4 font-bold text-sm md:text-base">NEW MARCH RACES & RESULTS COMING SOON</span>
+            <span className="inline-block px-4 font-bold text-sm md:text-base">NEW MARCH RACES & RESULTS COMING SOON</span>
+            <span className="inline-block px-4 font-bold text-sm md:text-base">NEW MARCH RACES & RESULTS COMING SOON</span>
+          </div>
+        </div>
+
         {/* Preview of Statistics Section */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-[32px] left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
       </div>
     </div>
   );
