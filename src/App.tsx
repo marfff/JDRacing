@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Trophy, Medal, Clock, Youtube, Instagram, Facebook, Flag, Timer, Award, Users, Gauge, ChevronDown, MapPin, Cloud, Calendar, ArrowRight } from 'lucide-react';
+import NewsTicker from './components/NewsTicker';
 import { Race, Team, TrainingProgram, Statistic, SocialLink, RaceResult } from './types';
 
 // Lazy load components
@@ -197,7 +198,7 @@ function App(): JSX.Element {
         Skip to main content
       </a>
 
-      <header role="banner" aria-label="Site header" className="relative">
+      <header role="banner" aria-label="Site header" className="relative z-50">
         <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 text-white py-2 relative overflow-hidden">
           <div className="animate-pulse">
             <p className="text-center font-bold">
@@ -206,6 +207,9 @@ function App(): JSX.Element {
               <span className="text-xl ml-1">⭐</span>
             </p>
           </div>
+        </div>
+        <div className="sticky top-0">
+          <NewsTicker />
         </div>
       </header>
 
