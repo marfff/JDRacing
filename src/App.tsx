@@ -198,7 +198,7 @@ function App(): JSX.Element {
         Skip to main content
       </a>
 
-      <header role="banner" aria-label="Site header" className="relative z-50">
+      <header role="banner" aria-label="Site header" className="fixed top-0 left-0 right-0 z-50">
         <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 text-white py-2 relative overflow-hidden">
           <div className="animate-pulse">
             <p className="text-center font-bold">
@@ -208,10 +208,9 @@ function App(): JSX.Element {
             </p>
           </div>
         </div>
-        <div className="sticky top-0">
-          <NewsTicker />
-        </div>
+        <NewsTicker />
       </header>
+      <div className="h-[88px]"></div>
 
       <main id="main-content" role="main">
         <Suspense 
