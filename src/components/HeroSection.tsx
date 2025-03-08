@@ -52,9 +52,9 @@ const HeroSection: React.FC = () => {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-[60px] left-0 right-0 flex justify-center items-center gap-4 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-orange-400" />
-          <p className="text-sm font-semibold text-orange-400">Scroll to explore</p>
-          <ChevronDown className="w-6 h-6 text-orange-400" />
+          <ChevronDown className="w-6 h-6 text-orange-300" />
+          <p className="text-sm font-semibold text-orange-300">Scroll to explore</p>
+          <ChevronDown className="w-6 h-6 text-orange-300" />
         </div>
 
         {/* Preview of Statistics Section */}
