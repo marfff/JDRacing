@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="relative h-[70vh] overflow-hidden group">
+    <div className="relative h-[70vh] overflow-hidden group z-10">
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[90%] h-[90%] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-radial from-orange-500/20 via-black/80 to-black animate-pulse z-20"></div>
