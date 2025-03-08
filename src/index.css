@@ -5,45 +5,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Focus styles */
-:focus {
-  outline: none;
+@layer base {
+  /* Focus styles */
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.orange.500');
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* Custom focus styles for dark backgrounds */
+  .bg-black :focus-visible {
+    outline-color: theme('colors.orange.400');
+  }
 }
 
-:focus-visible {
-  outline: 2px solid theme('colors.orange.500');
-  outline-offset: 2px;
-  border-radius: 0.25rem;
-}
+@layer components {
+  /* Skip to main content link */
+  .skip-to-main {
+    position: fixed;
+    top: -100%;
+    left: 1rem;
+    z-index: 100;
+    padding: 1rem;
+    background-color: theme('colors.orange.500');
+    color: white;
+    border-radius: 0.5rem;
+    transition: top 0.2s;
+  }
 
-/* Custom focus styles for dark backgrounds */
-.bg-black :focus-visible {
-  outline-color: theme('colors.orange.400');
-}
-
-/* Skip to main content link */
-.skip-to-main {
-  position: fixed;
-  top: -100%;
-  left: 1rem;
-  z-index: 100;
-  padding: 1rem;
-  background-color: theme('colors.orange.500');
-  color: white;
-  border-radius: 0.5rem;
-  transition: top 0.2s;
-}
-
-.skip-to-main:focus {
-  top: 1rem;
-}
-
-/* Performance optimized animations */
-@layer utilities {
-  .animate-optimized {
-    will-change: transform;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+  .skip-to-main:focus {
+    top: 1rem;
   }
 }
 
@@ -101,227 +96,229 @@
   }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+@layer utilities {
+  .animate-optimized {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
-  50% {
-    background-position: 100% 150%;
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 150%; }
+    100% { background-position: 0% 50%; }
   }
-  100% {
-    background-position: 0% 50%;
+
+  @keyframes mesh {
+    0% { transform: translateX(-10px) translateY(-10px); }
+    100% { transform: translateX(10px) translateY(10px); }
   }
-}
 
-@keyframes mesh {
-  0% {
-    transform: translateX(-10px) translateY(-10px);
+  @keyframes heroImageAnimation {
+    0% { transform: translateX(-15%) scale(1.1); }
+    100% { transform: translateX(40%) scale(1.1); }
   }
-  100% {
-    transform: translateX(10px) translateY(10px);
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
   }
-}
 
-@keyframes heroImageAnimation {
-  0% {
-    transform: translateX(-15%) scale(1.1);
+  @keyframes slide {
+    from { transform: translateX(-100%) rotate(-45deg); }
+    to { transform: translateX(100%) rotate(-45deg); }
   }
-  100% {
-    transform: translateX(40%) scale(1.1);
+
+  @keyframes newsreel {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
   }
-}
 
-.hero-image-container {
-  animation: heroImageAnimation 5s linear infinite;
-  transform-origin: center;
-  will-change: transform;
-}
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
 
-.breathing-text {
-  animation: breathe 4s infinite;
-  will-change: transform;
-}
+  .hero-image-container {
+    animation: heroImageAnimation 5s linear infinite;
+    transform-origin: center;
+    will-change: transform;
+  }
 
-@keyframes breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
+  .breathing-text {
+    animation: breathe 4s infinite;
+    will-change: transform;
+  }
 
-.animate-slide {
-  animation: slide 15s linear infinite;
-  will-change: transform;
-}
+  .animate-slide {
+    animation: slide 15s linear infinite;
+    will-change: transform;
+  }
 
-.animate-slide-delayed {
-  animation: slide 15s linear infinite;
-  animation-delay: -7.5s;
-  will-change: transform;
-}
+  .animate-slide-delayed {
+    animation: slide 15s linear infinite;
+    animation-delay: -7.5s;
+    will-change: transform;
+  }
 
-@keyframes slide {
-  from { transform: translateX(-100%) rotate(-45deg); }
-  to { transform: translateX(100%) rotate(-45deg); }
-}
+  .animate-newsreel {
+    animation: newsreel 20s linear infinite;
+    will-change: transform;
+  }
 
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid theme('colors.orange.500');
-  border-radius: 50%;
-  border-top-color: transparent;
-  animation: spin 1s linear infinite;
-  will-change: transform;
-}
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid theme('colors.orange.500');
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    will-change: transform;
+  }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+  .bg-track {
+    background-color: rgba(0, 0, 0, 0.2);
+    background-image: 
+      radial-gradient(circle at 1px 1px, theme('colors.orange.300/0.2') 1px, transparent 0),
+      radial-gradient(circle at 1px 1px, theme('colors.orange.400/0.15') 2px, transparent 0),
+      linear-gradient(to right, rgba(249, 115, 22, 0.15), transparent);
+    background-size: 40px 40px, 60px 60px, 100% 100%;
+    background-position: 0 0, 30px 30px, 0 0;
+    background-attachment: fixed;
+    backdrop-filter: blur(1px);
+  }
 
-.bg-track {
-  background-color: rgba(0, 0, 0, 0.2);
-  background-image: 
-    radial-gradient(circle at 1px 1px, theme('colors.orange.300/0.2') 1px, transparent 0),
-    radial-gradient(circle at 1px 1px, theme('colors.orange.400/0.15') 2px, transparent 0),
-    linear-gradient(to right, rgba(249, 115, 22, 0.15), transparent);
-  background-size: 40px 40px, 60px 60px, 100% 100%;
-  background-position: 0 0, 30px 30px, 0 0;
-  background-attachment: fixed;
-  backdrop-filter: blur(1px);
-}
+  .bg-track::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 30%, theme('colors.orange.200/0.15') 1px, transparent 2px);
+    background-size: 1200px 1200px;
+    background-position: 0 0;
+    pointer-events: none;
+  }
 
-.bg-track::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 30%, theme('colors.orange.200/0.15') 1px, transparent 2px);
-  background-size: 1200px 1200px;
-  background-position: 0 0;
-  pointer-events: none;
-}
+  .bg-track::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 70% 60%, theme('colors.orange.200/0.15') 1px, transparent 2px);
+    background-size: 1000px 1000px;
+    background-position: 20px 20px;
+    animation: starPulse1 3s ease-in-out infinite;
+    pointer-events: none;
+  }
 
-.bg-track::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 70% 60%, theme('colors.orange.200/0.15') 1px, transparent 2px);
-  background-size: 1000px 1000px;
-  background-position: 20px 20px;
-  animation: starPulse1 3s ease-in-out infinite;
-  pointer-events: none;
-}
+  @keyframes starPulse1 {
+    0%, 100% { opacity: 0.08; }
+    50% { opacity: 0.2; }
+  }
+  @keyframes starPulse2 {
+    0%, 100% { opacity: 0.05; }
+    50% { opacity: 0.15; }
+  }
 
-@keyframes starPulse1 {
-  0%, 100% { opacity: 0.08; }
-  50% { opacity: 0.2; }
-}
+  @keyframes starPulse3 {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.25; }
+  }
 
-@keyframes starPulse2 {
-  0%, 100% { opacity: 0.05; }
-  50% { opacity: 0.15; }
-}
+  .hero-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(90deg, 
+      rgba(249, 115, 22, 0.1) 0%,
+      rgba(249, 115, 22, 0.15) 25%,
+      rgba(249, 115, 22, 0.1) 50%,
+      rgba(249, 115, 22, 0.15) 75%,
+      rgba(249, 115, 22, 0.1) 100%
+    );
+    background-size: 200% 100%;
+    animation: wave 10s linear infinite;
+  }
 
-@keyframes starPulse3 {
-  0%, 100% { opacity: 0.1; }
-  50% { opacity: 0.25; }
-}
+  .hero-gradient::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, 
+      transparent 0%,
+      rgba(249, 115, 22, 0.1) 50%,
+      rgba(249, 115, 22, 0.15) 100%
+    );
+  }
 
-.hero-gradient {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(90deg, 
-    rgba(249, 115, 22, 0.1) 0%,
-    rgba(249, 115, 22, 0.15) 25%,
-    rgba(249, 115, 22, 0.1) 50%,
-    rgba(249, 115, 22, 0.15) 75%,
-    rgba(249, 115, 22, 0.1) 100%
-  );
-  background-size: 200% 100%;
-  animation: wave 10s linear infinite;
-}
+  /* Hide YouTube elements */
+  .ytp-chrome-top,
+  .ytp-watermark,
+  .ytp-youtube-button,
+  .ytp-title,
+  .ytp-title-text,
+  .ytp-title-link,
+  .ytp-chrome-top-buttons,
+  .ytp-gradient-top,
+  .ytp-chrome-controls .ytp-button[aria-label="YouTube"],
+  .ytp-pause-overlay,
+  .ytp-ce-element,
+  .ytp-show-cards-title,
+  .ytp-chrome-bottom,
+  .ytp-gradient-bottom,
+  .ytp-chrome-controls,
+  .ytp-large-play-button,
+  .ytp-large-play-button-bg {
+    display: none !important;
+  }
 
-.hero-gradient::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, 
-    transparent 0%,
-    rgba(249, 115, 22, 0.1) 50%,
-    rgba(249, 115, 22, 0.15) 100%
-  );
-}
+  .youtube-player {
+    border: none;
+  }
 
-/* Hide YouTube elements */
-.ytp-chrome-top,
-.ytp-watermark,
-.ytp-youtube-button,
-.ytp-title,
-.ytp-title-text,
-.ytp-title-link,
-.ytp-chrome-top-buttons,
-.ytp-gradient-top,
-.ytp-chrome-controls .ytp-button[aria-label="YouTube"],
-.ytp-pause-overlay,
-.ytp-ce-element,
-.ytp-show-cards-title,
-.ytp-chrome-bottom,
-.ytp-gradient-bottom,
-.ytp-chrome-controls,
-.ytp-large-play-button,
-.ytp-large-play-button-bg {
-  display: none !important;
-}
+  iframe[src*="youtube.com"] {
+    border: none;
+  }
 
-.youtube-player {
-  border: none;
-}
+  /* Additional specific targeting */
+  .ytp-cued-thumbnail-overlay {
+    display: none !important;
+  }
 
-iframe[src*="youtube.com"] {
-  border: none;
-}
+  .ytp-spinner {
+    display: none !important;
+  }
 
-/* Additional specific targeting */
-.ytp-cued-thumbnail-overlay {
-  display: none !important;
-}
+  iframe[src*="youtube"] {
+    border: none !important;
+    background: #000 !important;
+  }
 
-.ytp-spinner {
-  display: none !important;
-}
+  ::selection {
+    background: #f97316;
+    color: white;
+  }
+  .clip-diagonal {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  }
 
-iframe[src*="youtube"] {
-  border: none !important;
-  background: #000 !important;
-}
-
-::selection {
-  background: #f97316;
-  color: white;
-}
-
-.clip-diagonal {
-  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-}
-
-[data-trophy]::before {
-  content: "🏆";
-  font-size: 1.5em;
-  background: linear-gradient(45deg, #C0C0C0, #E8E8E8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 2px rgba(192, 192, 192, 0.5));
+  [data-trophy]::before {
+    content: "🏆";
+    font-size: 1.5em;
+    background: linear-gradient(45deg, #C0C0C0, #E8E8E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 2px rgba(192, 192, 192, 0.5));
+  }
 }
