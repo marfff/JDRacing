@@ -313,6 +313,43 @@
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
   }
 
+  .ticker-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .animate-ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+    animation-play-state: running;
+    -webkit-animation: ticker 20s linear infinite;
+    -webkit-animation-play-state: running;
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+    }
+  }
+
+  @-webkit-keyframes ticker {
+    0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+    }
+  }
+
   [data-trophy]::before {
     content: "🏆";
     font-size: 1.5em;
