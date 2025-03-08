@@ -6,6 +6,10 @@ const NewsTicker: React.FC = () => {
       <div className="animate-ticker whitespace-nowrap">
         <p className="text-center font-bold inline-block px-4 text-base">
           NEW MARCH RACES & RESULTS COMING SOON
+          <span className="inline-block px-8">•</span>
+          NEW MARCH RACES & RESULTS COMING SOON
+          <span className="inline-block px-8">•</span>
+          NEW MARCH RACES & RESULTS COMING SOON
         </p>
       </div>
     </div>
