@@ -270,9 +270,9 @@ function App(): JSX.Element {
   ];
 
   const getChangeColor = (start: number, end: number): string => {
-    if (end < start) return 'text-red-500';
-    if (end > start) return 'text-green-500';
-    return 'text-gray-500';
+    if (end < start) return 'text-green-500';  // Better position (smaller number)
+    if (end > start) return 'text-red-500';    // Worse position (bigger number)
+    return 'text-gray-500';                    // Same position
   };
 
   return (
