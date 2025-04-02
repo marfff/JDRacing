@@ -4,8 +4,9 @@ import { Mail, Youtube, Instagram, Facebook } from 'lucide-react';
 const SponsorshipBanner: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3 px-4 font-bold tracking-wider hover:from-orange-500 hover:to-orange-600 transition-all duration-300 relative overflow-hidden group">
-      <div className="container mx-auto grid grid-cols-3 items-center gap-4">
-        <div className="flex items-center gap-3">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+
+        <div className="flex items-center gap-3 order-1 md:order-none">
           <a 
             href="https://www.youtube.com/@frizzler1" 
             target="_blank" 
@@ -32,14 +33,14 @@ const SponsorshipBanner: React.FC = () => {
           </a>
         </div>
 
-        <div className="flex items-center justify-center">
-          <span className="text-lg font-bold tracking-wider">⭐ SPONSORSHIP WANTED ⭐</span>
+        <div className="flex items-center justify-center order-3 md:order-none">
+          <span className="text-base md:text-lg font-bold tracking-wider whitespace-nowrap">⭐ SPONSORSHIP WANTED ⭐</span>
         </div>
 
-        <div className="flex items-center justify-end gap-4">
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 order-2 md:order-none">
           <a 
             href="mailto:frizzler@icloud.com" 
-            className="hover:text-orange-200 transition-colors duration-300 flex items-center gap-2"
+            className="hover:text-orange-200 transition-colors duration-300 flex items-center gap-2 whitespace-nowrap text-sm md:text-base"
           >
             <Mail className="w-4 h-4" />
             frizzler@icloud.com
