@@ -22,14 +22,6 @@ const LatestRacesSection: React.FC<LatestRacesSectionProps> = ({ races, currentR
     return () => clearInterval(interval);
   }, [races.length]);
 
-  const handlePrevious = () => {
-    setCurrentRace((prev) => (prev - 1 + races.length) % races.length);
-  };
-
-  const handleNext = () => {
-    setCurrentRace((prev) => (prev + 1) % races.length);
-  };
-
   return (
     <section
       ref={containerRef as React.RefObject<HTMLElement>}
@@ -58,7 +50,7 @@ const LatestRacesSection: React.FC<LatestRacesSectionProps> = ({ races, currentR
                   <iframe
                     width="100%"
                     height="100%"
-                    src={`https://www.youtube-nocookie.com/embed/${race.videoId}?modestbranding=1&rel=0&showinfo=0&controls=0&disablekb=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&origin=${window.location.origin}&enablejsapi=1&showsearch=0&fs=0&autohide=1&mute=1&loop=1&playlist=${race.videoId}&autoplay=1&playlist=${race.videoId}&version=3&start=1`}
+                    src={`https://www.youtube-nocookie.com/embed/${race.videoId}?modestbranding=1&rel=0&showinfo=0&controls=0&disablekb=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&origin=${window.location.origin}&enablejsapi=1&showsearch=0&fs=0&autohide=1&mute=1&loop=1&playlist=${race.videoId}&autoplay=1&version=3&start=1`}
                     title={race.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

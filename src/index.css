@@ -1,5 +1,7 @@
 /* postcss-custom-properties: off */
 /* CSS language server: ignore @tailwind directives */
+/* stylelint-disable-next-line at-rule-no-unknown */
+/* vscode-css-languageserver: ignore @tailwind */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;

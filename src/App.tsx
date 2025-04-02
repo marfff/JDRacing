@@ -1,6 +1,5 @@
 import { Suspense, lazy } from 'react';
 import { Trophy, Youtube, Instagram, Facebook, Flag, Timer, Award } from 'lucide-react';
-import NewsTicker from './components/NewsTicker';
 import { Race, Team, TrainingProgram, Statistic, SocialLink, RaceResult } from './types';
 
 // Lazy load components
@@ -12,6 +11,8 @@ const RacingJourneySection = lazy(() => import('./components/RacingJourneySectio
 const ResultsSection = lazy(() => import('./components/ResultsSection'));
 const DriverTrainingSection = lazy(() => import('./components/DriverTrainingSection'));
 const FollowOnSection = lazy(() => import('./components/FollowOnSection'));
+const BackToTop = lazy(() => import('./components/BackToTop'));
+const SponsorshipBanner = lazy(() => import('./components/SponsorshipBanner'));
 
 function App(): JSX.Element {
   // Move data to separate files later
@@ -48,13 +49,13 @@ function App(): JSX.Element {
     },
     {
       label: "Podiums",
-      value: "15",
+      value: "17",
       icon: <Trophy className="w-6 h-6" />,
       description: "Top 3 finishes achieved"
     },
     {
       label: "Fastest Laps",
-      value: "12",
+      value: "14",
       icon: <Timer className="w-6 h-6" />,
       description: "Track records set"
     },
@@ -282,16 +283,7 @@ function App(): JSX.Element {
       </a>
 
       <header role="banner" aria-label="Site header" className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm">
-        <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 text-white py-1.5 sm:py-2 relative overflow-hidden">
-          <div className="animate-pulse">
-            <p className="text-center font-bold text-sm sm:text-base">
-              <span className="text-lg sm:text-xl">⭐</span> SPONSORSHIP WANTED <span className="text-lg sm:text-xl">⭐</span>
-              <span className="text-xs sm:text-sm ml-2 opacity-75">frizzler1@icloud.com</span>
-              <span className="text-lg sm:text-xl ml-1">⭐</span>
-            </p>
-          </div>
-        </div>
-        <NewsTicker />
+        <SponsorshipBanner />
       </header>
       <div className="h-[72px] sm:h-[84px]"></div>
 
@@ -349,6 +341,7 @@ function App(): JSX.Element {
           </p>
         </div>
       </footer>
+      <BackToTop />
     </div>
   );
 }
