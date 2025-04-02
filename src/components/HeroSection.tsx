@@ -24,6 +24,12 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="relative z-20 flex flex-col items-center justify-center h-full text-white px-4">
+        <a 
+          href="#race-results" 
+          className="absolute top-8 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 hover:bg-orange-500/30 text-orange-500 text-sm font-semibold rounded-lg transition-all duration-300 border border-orange-500/30 hover:border-orange-500/50 backdrop-blur-sm"
+        >
+          Recent Results
+        </a>
         <div className="relative mb-8">
           <div className="absolute -left-8 top-1/2 w-6 h-24 bg-gradient-to-b from-orange-500 to-transparent transform -translate-y-1/2"></div>
           

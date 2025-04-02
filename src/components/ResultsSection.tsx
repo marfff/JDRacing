@@ -20,7 +20,8 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ raceResults, getChangeC
   return (
     <section 
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="py-20 px-4 md:px-8 bg-track"
+      id="race-results"
+      className="py-20 px-4 md:px-8 bg-track scroll-mt-[84px]"
       aria-labelledby="results-title"
     >
       <div className="max-w-7xl mx-auto">
