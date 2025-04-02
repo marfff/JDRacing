@@ -45,6 +45,8 @@ export interface SocialLink {
   url: string;
   icon: ReactNode;
   bgClass: string;
+  handle: string;
+  secondaryHandle?: string;
 }
 
 export interface RaceSession {
@@ -52,6 +54,8 @@ export interface RaceSession {
   position?: number;
   startPosition?: number;
   endPosition?: number;
+  trophy?: string;
+  note?: string;
 }
 
 export interface RaceDay {

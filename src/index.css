@@ -1,4 +1,5 @@
 /* postcss-custom-properties: off */
+/* CSS language server: ignore @tailwind directives */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -317,6 +318,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
     -webkit-mask-image: -webkit-linear-gradient(left, transparent 0%, #000 5%, #000 95%, transparent 100%);
   }
 
@@ -355,8 +357,10 @@
     content: "🏆";
     font-size: 1.5em;
     background: linear-gradient(45deg, #C0C0C0, #E8E8E8);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
     filter: drop-shadow(0 0 2px rgba(192, 192, 192, 0.5));
   }
 }

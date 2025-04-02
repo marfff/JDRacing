@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react';
-import { Trophy, Medal, Clock, Youtube, Instagram, Facebook, Flag, Timer, Award, Users, Gauge, ChevronDown, MapPin, Cloud, Calendar, ArrowRight } from 'lucide-react';
+import { Suspense, lazy } from 'react';
+import { Trophy, Youtube, Instagram, Facebook, Flag, Timer, Award } from 'lucide-react';
 import NewsTicker from './components/NewsTicker';
 import { Race, Team, TrainingProgram, Statistic, SocialLink, RaceResult } from './types';
 
@@ -14,8 +14,6 @@ const DriverTrainingSection = lazy(() => import('./components/DriverTrainingSect
 const FollowOnSection = lazy(() => import('./components/FollowOnSection'));
 
 function App(): JSX.Element {
-  const [currentRace, setCurrentRace] = React.useState(0);
-
   // Move data to separate files later
   const races: Race[] = [
     {
@@ -149,22 +147,70 @@ function App(): JSX.Element {
 
   const raceResults: RaceResult[] = [
     {
+      track: "Mansell",
+      location: "Dunkeswell",
+      trophy: "Club Round 1",
+      weather: "Dry",
+      date: "March 30th",
+      gridSize: 26,
+      sessions: [
+        { day: "March 30th", results: [
+          { name: "Qualifying", startPosition: 16, endPosition: 13 },
+          { name: "Heat 1", startPosition: 16, endPosition: 13 },
+          { name: "Pre Final", startPosition: 12, endPosition: 14 },
+          { name: "Final", startPosition: 14, endPosition: 13 }
+        ]}
+      ]
+    },
+    {
       track: "Warden Law",
       location: "Durham",
-      trophy: "Spring Round 3 & 4",
-      weather: "Raining / Damp / Dry",
-      date: "February ",
-      gridSize: 23,
+      trophy: "Spring Round 5&6",
+      weather: "Dry",
+      date: "March 15th",
+      gridSize: 10,
       sessions: [
         { day: "SAT", results: [
-          { name: "TQ", position: 17 },
-          { name: "PF", startPosition: 17, endPosition: 21 },
-          { name: "FN", startPosition: 21, endPosition: 20 }
+          { name: "Qualifying", startPosition: 3, endPosition: 4 },
+          { name: "Heat 1", startPosition: 3, endPosition: 4 },
+          { name: "Heat 2", startPosition: 4, endPosition: 2, trophy: "2nd / Silver Cup" }
         ]},
         { day: "SUN", results: [
-          { name: "TQ", position: 22 },
-          { name: "PF", startPosition: 22, endPosition: 19 },
-          { name: "FN", startPosition: 19, endPosition: 20 }
+          { name: "Qualifying", position: 3 },
+          { name: "Heat 1", startPosition: 1, endPosition: 6 },
+          { name: "Heat 2", startPosition: 4, endPosition: 2, trophy: "2nd / Silver Cup" }
+        ]}
+      ]
+    },
+    {
+      track: "Forest Edge",
+      location: "Barton Stacey",
+      trophy: "Club Round 1",
+      weather: "Dry",
+      date: "March 2nd",
+      gridSize: 25,
+      sessions: [
+        { day: "March 2nd", results: [
+          { name: "Qualifying", startPosition: 6, endPosition: 1, trophy: "🎆" },
+          { name: "Heat 1", startPosition: 14, endPosition: 12 },
+          { name: "Heat 2", startPosition: 14, endPosition: 12, note: "(pen)" },
+          { name: "Final", startPosition: 5, endPosition: 3, note: "(dsq)" }
+        ]}
+      ]
+    },
+    {
+      track: "Whilton Mill",
+      location: "Daventry",
+      trophy: "Club Round 1",
+      weather: "Dry",
+      date: "March 23rd",
+      gridSize: 34,
+      sessions: [
+        { day: "March 23rd", results: [
+          { name: "Qualifying", position: 15 },
+          { name: "Heat 1", startPosition: 15, endPosition: 17 },
+          { name: "Heat 2", startPosition: 15, endPosition: 17, note: "(pen)" },
+          { name: "Final", startPosition: 13, endPosition: 10 }
         ]}
       ]
     },
@@ -173,13 +219,50 @@ function App(): JSX.Element {
       location: "Grantham",
       trophy: "Winter Warmer",
       weather: "Dry",
-      date: "February ",
+      date: "February",
       gridSize: 33,
       sessions: [
         { day: "WEEKEND", results: [
-          { name: "TQ", position: 21 },
-          { name: "PF", startPosition: 31, endPosition: 21 },
-          { name: "FN", startPosition: 21, endPosition: 19 }
+          { name: "Qualifying", position: 21 },
+          { name: "Pre Final", startPosition: 31, endPosition: 21 },
+          { name: "Final", startPosition: 21, endPosition: 19 }
+        ]}
+      ]
+    },
+    {
+      track: "Warden Law",
+      location: "Durham",
+      trophy: "Spring Round 3 & 4",
+      weather: "Raining / Damp / Dry",
+      date: "February",
+      gridSize: 23,
+      sessions: [
+        { day: "SAT", results: [
+          { name: "Qualifying", position: 17 },
+          { name: "Pre Final", startPosition: 17, endPosition: 21 },
+          { name: "Final", startPosition: 21, endPosition: 20 }
+        ]},
+        { day: "SUN", results: [
+          { name: "Qualifying", position: 22 },
+          { name: "Pre Final", startPosition: 22, endPosition: 19 },
+          { name: "Final", startPosition: 19, endPosition: 20 }
+        ]}
+      ]
+    },
+    {
+      track: "Whilton Mill",
+      location: "Daventry",
+      trophy: "January Warm Up",
+      weather: "Wet",
+      date: "January 26th",
+      gridSize: 24,
+      sessions: [
+        { day: "January 26th", results: [
+          { name: "Qualifying", position: 13 },
+          { name: "Heat 1", startPosition: 13, endPosition: 18 },
+          { name: "Heat 2", startPosition: 13, endPosition: 17 },
+          { name: "Heat 3", startPosition: 13, endPosition: 17 },
+          { name: "Final", startPosition: 17, endPosition: 8 }
         ]}
       ]
     }
@@ -229,7 +312,7 @@ function App(): JSX.Element {
                 <StatisticsSection statistics={statistics} />
               </div>
               <div className="bg-gradient-to-b from-black/80 via-transparent to-black/80">
-                <LatestRacesSection races={races} currentRace={currentRace} />
+                <LatestRacesSection races={races} currentRace={0} />
               </div>
               <div className="bg-gradient-to-b from-black/80 via-transparent to-black/80">
                 <FeaturedRaceSection />

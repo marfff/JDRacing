@@ -87,6 +87,29 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ raceResults, getChangeC
                                     {result.position !== undefined ? (
                                       <span className="text-white text-sm">
                                         {result.position}
+                                        {result.trophy && (
+                                          <span className="inline-flex items-center gap-1 ml-1">
+                                            {result.position === 1 && (
+                                              <>
+                                                <Trophy className="w-4 h-4 text-yellow-500 animate-bounce" />
+                                                <span className="animate-ping">🎆</span>
+                                              </>
+                                            )}
+                                            {result.position === 2 && (
+                                              <Trophy className="w-4 h-4 text-gray-300 animate-bounce" />
+                                            )}
+                                            {result.position === 3 && (
+                                              <Trophy className="w-4 h-4 text-amber-600 animate-bounce" />
+                                            )}
+                                          </span>
+                                        )}
+                                        {result.trophy && (
+                                          <span className="inline-flex items-center gap-1 ml-2">
+                                            <Trophy className="w-4 h-4 text-yellow-500 animate-pulse" />
+                                            <span className="text-yellow-500">{result.trophy}</span>
+                                            <span className="animate-ping">🎆</span>
+                                          </span>
+                                        )}
                                       </span>
                                     ) : result.startPosition !== undefined && result.endPosition !== undefined ? (
                                       <>
@@ -99,6 +122,25 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ raceResults, getChangeC
                                         />
                                         <span className="text-white text-sm">
                                           {result.endPosition}
+                                          {result.note && (
+                                            <span className="text-gray-400 ml-1">{result.note}</span>
+                                          )}
+                                          {result.trophy && (
+                                            <span className="inline-flex items-center gap-1 ml-1">
+                                              {result.endPosition === 1 && (
+                                                <>
+                                                  <Trophy className="w-4 h-4 text-yellow-500 animate-bounce" />
+                                                  <span className="animate-ping">🎆</span>
+                                                </>
+                                              )}
+                                              {result.endPosition === 2 && (
+                                                <Trophy className="w-4 h-4 text-gray-300 animate-bounce" />
+                                              )}
+                                              {result.endPosition === 3 && (
+                                                <Trophy className="w-4 h-4 text-amber-600 animate-bounce" />
+                                              )}
+                                            </span>
+                                          )}
                                         </span>
                                       </>
                                     ) : null}
@@ -116,28 +158,6 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ raceResults, getChangeC
               ))}
             </div>
 
-            <div 
-              className="mt-12 text-xs text-orange-500 flex items-center justify-center space-x-6 font-mono border-t border-gray-800 pt-8"
-              role="list"
-              aria-label="Race terminology legend"
-            >
-              {[
-                { term: "TQ", desc: "Timed Qualifying" },
-                { term: "PF", desc: "Pre-Final" },
-                { term: "FN", desc: "Final" },
-                { term: "H", desc: "Heat" }
-              ].map((item, i) => (
-                <span 
-                  key={i}
-                  className="px-3 py-1.5 bg-black/30 rounded-lg hover:bg-black/40 transition-all"
-                  role="listitem"
-                  tabIndex={0}
-                  aria-label={`${item.term} means ${item.desc}`}
-                >
-                  {item.term} - {item.desc}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>
